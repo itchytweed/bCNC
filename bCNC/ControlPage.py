@@ -372,10 +372,13 @@ class DROFrame(CNCRibbon.PageFrame):
 		self.app.abcdro.updateCoords()
 	#----------------------------------------------------------------------
 	def padFloat(self, decimals, value):
+		# 13 Jan 2021 - Richard Polivka
+		# nasty hack to ensure that the display shows 4 decimals at all times
+		# regardless if operating in inches or millimeters
 		if decimals>0:
-			return "%0.*f"%(decimals, value)
+			return "%10.4f" % value
 		else:
-			return value
+			return "%10.4f" % value
 
 	#----------------------------------------------------------------------
 	# Do not give the focus while we are running
